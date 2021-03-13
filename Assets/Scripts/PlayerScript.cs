@@ -17,9 +17,10 @@ public class PlayerScript : MonoBehaviour
         float dy = Input.GetAxis("Vertical") * Time.deltaTime * 8f;
 
         // Unityでは2DであってもVector3型で指定しなければならない
+        // Mathf.Clampは値を2, 3引数の値に限定する
         transform.position = new Vector3(
-            transform.position.x + dx,
-            transform.position.y + dy,
+            Mathf.Clamp(transform.position.x + dx, -8f, 8f),
+            Mathf.Clamp(transform.position.y + dy, -4.5f, 4.5f),
             10
         );
 
