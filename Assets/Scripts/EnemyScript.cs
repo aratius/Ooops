@@ -31,12 +31,15 @@ public class EnemyScript : MonoBehaviour
         // 弾と衝突
         if (other.gameObject.CompareTag("Bullet")) {
             gameController.AddScore(10);  //得点を加算
+
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
         // プレイヤーと衝突
         if (other.gameObject.CompareTag("Player")) {
+            gameController.GameOver();
+
             Instantiate(explosion, other.transform.position, other.transform.rotation);
             Destroy(other.gameObject);
             Destroy(gameObject);
