@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 2261715229086940149, guid: de0792a80f14c4278815b3a205471783, type: 3}
+  scoreText: {fileID: 930232033}
 --- !u!4 &531721071
 Transform:
   m_ObjectHideFlags: 0
