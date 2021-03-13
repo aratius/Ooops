@@ -28,7 +28,9 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    // 発射スクリプト
     IEnumerator Shoot() {
+        // 無限ループ
         while(true) {
             Instantiate(bullet, transform.position, transform.rotation);
             yield return new WaitForSeconds(0.2f);
