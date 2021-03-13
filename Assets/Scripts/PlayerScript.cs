@@ -16,10 +16,12 @@ public class PlayerScript : MonoBehaviour
         float dx = Input.GetAxis("Horizontal") * Time.deltaTime * 8f;
         float dy = Input.GetAxis("Vertical") * Time.deltaTime * 8f;
 
+        // Unityでは2DであってもVector3型で指定しなければならない
         transform.position = new Vector3(
             transform.position.x + dx,
             transform.position.y + dy,
             10
         );
+
     }
 }
