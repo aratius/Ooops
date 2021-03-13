@@ -29,5 +29,10 @@ public class EnemyScript : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+        if (other.gameObject.CompareTag("Player")) {
+            Instantiate(explosion, other.transform.position, other.transform.rotation);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
