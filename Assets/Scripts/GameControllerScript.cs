@@ -15,7 +15,7 @@ public class GameControllerScript : MonoBehaviour
     {
         StartCoroutine("SpawnEnemy");
         score = 0;
-        scoreText.text = "Score" + score;
+        UpdateScoreText();
     }
 
     // Update is called once per frame
@@ -33,5 +33,16 @@ public class GameControllerScript : MonoBehaviour
             );
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    // スコア加算publicメソッド
+    public void AddScore(int scoreToAdd) {
+        score += scoreToAdd;
+        UpdateScoreText();
+    }
+
+    // スコアの反映処理を共通化するメソッド
+    void UpdateScoreText() {
+        scoreText.text = "Score" + score;
     }
 }
