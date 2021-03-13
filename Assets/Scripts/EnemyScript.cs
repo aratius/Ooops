@@ -6,6 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
 
     private float phase;  //三角関数の位相をバラつかせるため
+    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -20,5 +21,13 @@ public class EnemyScript : MonoBehaviour
             Mathf.Cos(Time.frameCount * 0.05f + phase) * 0.05f,
             -2f * Time.deltaTime,
             0f);
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet")) {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
