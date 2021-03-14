@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -9,13 +10,20 @@ public class PlayerScript : MonoBehaviour
     private Vector3 startPoint;
     private Vector3 endPoint;
     private Rigidbody rb;
+    public Text shotsText;
+    private int shots;
 
-    // Start is called before the first frame update
+
+    void UpdateShotsCount () {
+        shotsText.text = shots.ToString();
+    }
+
     void Start()
     {
         // Plane(direction, )
         plane = new Plane(Vector3.up, Vector3.zero);
         rb = GetComponent<Rigidbody>();
+        shots = 0;
     }
 
     // Update is called once per frame
@@ -36,6 +44,8 @@ public class PlayerScript : MonoBehaviour
             if(plane.Raycast(ray, out distance)) {
                 endPoint = ray.GetPoint(distance);
                 rb.AddForce(-1f * (endPoint - startPoint), ForceMode.Impulse);
+                shots++;
+                UpdateShotsCount();
             }
         }
     }
